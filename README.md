@@ -31,11 +31,11 @@
 
 ### 1. 任務一：UML 類別圖 (Domain Model)
 *(請將下載的 uml_diagram.png 放到專案中並在此處引用)*
-![UML Class Diagram](./uml_diagram.png)
+![UML Class Diagram](./uml_diagram.svg)
 
 ### 2. 任務二：資料庫 Schema 設計 (ER Model)
 *(請將下載的 erd_diagram.png 放到專案中並在此處引用)*
-![ER Diagram](./erd_diagram.png)
+![ER Model Diagram](./erd_diagram.svg)
 
 ---
 
@@ -44,6 +44,17 @@
 1. **安裝依賴套件：**
    ```bash
    npm install
+   npx tsx index.ts
+
+## 🖥️ 使用者介面與執行結果 (UI & Execution Output)
+
+### 1. 系統網頁介面預覽 (Web UI Screenshot)
+以下為本雲端檔案管理系統的樹狀階層與標籤管理呈現：
+
+![System UI](./ui_screenshot.png)
+
+### 2. 終端機執行日誌 (Console Output Log)
+系統執行 TypeScript 核心商務邏輯與命令模式 (Undo/Redo) 的實際輸出結果如下：
 
 
 ## 輸出結果
