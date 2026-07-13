@@ -33,13 +33,27 @@ function formatBytes(bytes: number): string {
   return `${Number.isInteger(mb) ? mb : mb.toFixed(1)}MB`;
 }
 
-/** 將節點名稱轉換成 XML 標籤（去除空白/括號/句點，符合客戶提供的預期格式） */
+/**
+ * 將節點名稱轉換成 XML 標籤（去除空白/括號/句點，符合客戶提供的預期格式）
+ *
+ * XML 規範：標籤名稱不可以「數字」開頭（也不可以空字串、不可以 "xml" 開頭）。
+ * 例如資料夾 "2025備份 (Archive_2025)" 轉換後會變成 "2025備份_Archive_2025"，
+ * 是以數字開頭的不合法標籤，瀏覽器（如 Edge）會直接拒絕解析整份 XML。
+ * 這裡在轉換完成後統一檢查，若標籤以數字開頭，自動補上底線前綴（_）修正。
+ */
 function toXmlTag(name: string): string {
-  return name
+  let tag = name
     .replace(/\s*\(/g, "_")
     .replace(/\)/g, "")
     .replace(/\./g, "_")
     .replace(/\s+/g, "_");
+
+  // 修正：標籤不可以數字開頭（或轉換後意外變成空字串）
+  if (tag === "" || /^[0-9]/.test(tag)) {
+    tag = "_" + tag;
+  }
+
+  return tag;
 }
 
 type SortField = "name" | "size" | "extension";
@@ -224,7 +238,6 @@ class ImageFile extends BaseFile {
 
   getExtension(): string {
     const parts = this.name.split(".");
-    // 請改成這樣：
     return parts.length > 1 ? parts[parts.length - 1]! : "";
   }
 
