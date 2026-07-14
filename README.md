@@ -30,11 +30,9 @@
 ## 📊 交付任務圖檔
 
 ### 1. 任務一：UML 類別圖 (Domain Model)
-*(請將下載的 uml_diagram.png 放到專案中並在此處引用)*
 ![UML Class Diagram](./uml_diagram.svg)
 
 ### 2. 任務二：資料庫 Schema 設計 (ER Model)
-*(請將下載的 erd_diagram.png 放到專案中並在此處引用)*
 ![ER Model Diagram](./erd_diagram.svg)
 
 ---
